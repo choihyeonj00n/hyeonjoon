@@ -3,11 +3,12 @@ using namespace std;
 
 //too large number - solve it
 
-int factorial(int init_num, int end_num){
-		int result = 1;
+long long int combinational(long long int init_num, long long int end_num){
+		long long int result = 1;
 
 		while(init_num != end_num){
 				result = result * init_num;
+				cout << "check : " << init_num << "|" << result << endl;
 				init_num --;
 		}
 		return result;
@@ -16,17 +17,16 @@ int factorial(int init_num, int end_num){
 int main(){
 		int testcase;
 		cin >> testcase;
-		int results[testcase];
+		long long int results[testcase];
 		for(int i = 0; i < testcase; i++){
 				int west, east;
 				cin >> west >> east;
-				int result;
+				long long int result;
 				if(west > east){
 						cout << "다리를 지을 수 있는 경우가 없습니다." << endl;
 				}
 				else{
-						int diff = east - west;
-						result = factorial(east, west) / factorial(diff, 0);
+						result = combinational(east, west);
 						results[i] = result;
 				}
 		}
