@@ -6,6 +6,11 @@
 #include <cstdlib>
 using namespace std;
 
+struct Point{
+	int row;
+	int col;
+};
+
 void find_result(int** field, int rows, int columns, int current_row, int current_column){
 
 		/*
@@ -23,28 +28,29 @@ void find_result(int** field, int rows, int columns, int current_row, int curren
 				find_result(field, rows, columns, current_row, current_column + 1);
 		}
 		*/
-	
-		vector<pair<int,int>> bucket;
-		bucket.push_back(make_pair(current_row, current_column));
+		vector<Point> bucket;
+		bucket.push_back({current_row, current_column});
 		field[current_row][current_column] = 0;
-		for(int i = 0; i < rows; i++){
-				for(int j = 0 ; j < columns; j++){
-						if(field[i][j] == 1){
-								for(int k = 0; k < bucket.size(); k++){
-										if(abs(bucket[k].first - i) == 1){
-												if(bucket[k].second == j){
-														bucket.push_back(make_pair(i, j));
-														field[i][j] = 0;
-												}
-										}
-										else if(abs(bucket[k].second - j) == 1){
-												if(bucket[k].first == i){
-														bucket.push_back(make_pair(i, j));
-														field[i][j] = 0;
-												}
-										}
-								}
-						}
+		while(!bucket.empty()){
+				Point current = bucket.back();
+				bucket.pop_back();
+				int row = current.row;
+				int col = current.col;
+				if(row - 1 > 0 && field[row - 1][col] == 1){
+						bucket.push_back({row-1, col});
+						field[row - 1][col] = 0;
+				} 
+				else if(row + 1 < rows && field[row + 1][col] == 1){
+						bucket.push_back({row + 1, col});
+						field[row + 1][col] = 0;
+				}
+				else if(col - 1 > 0 && field[row][col - 1] == 1){
+						bucket.push_back({row, col - 1});
+						field[row][col - 1] = 0;
+				}
+				else if(col + 1 < columns && field[row][col + 1] == 1){
+						bucket.push_back({row, col + 1});
+						field[row][col + 1] = 0;
 				}
 		}
 }
