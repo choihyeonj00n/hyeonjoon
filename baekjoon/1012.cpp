@@ -3,13 +3,12 @@
 #include <vector>
 #include <algorithm>
 #include <utility>
-#include <string.h>
+#include <cstdlib>
 using namespace std;
 
-/*
 void find_result(int** field, int rows, int columns, int current_row, int current_column){
 
-
+		/*
 		field[current_row][current_column] = 0;
 		if(current_row - 1 > 0 && field[current_row - 1][current_column] == 1){
 				find_result(field, rows, columns, current_row - 1, current_column);
@@ -23,10 +22,32 @@ void find_result(int** field, int rows, int columns, int current_row, int curren
 		else if(current_column + 1 < columns && field[current_row][current_column + 1] == 1){
 				find_result(field, rows, columns, current_row, current_column + 1);
 		}
-		
-
+		*/
+	
+		vector<pair<int,int>> bucket;
+		bucket.push_back(make_pair(current_row, current_column));
+		field[current_row][current_column] = 0;
+		for(int i = 0; i < rows; i++){
+				for(int j = 0 ; j < columns; j++){
+						if(field[i][j] == 1){
+								for(int k = 0; k < bucket.size(); k++){
+										if(abs(bucket[k].first - i) == 1){
+												if(bucket[k].second == j){
+														bucket.push_back(make_pair(i, j));
+														field[i][j] = 0;
+												}
+										}
+										else if(abs(bucket[k].second - j) == 1){
+												if(bucket[k].first == i){
+														bucket.push_back(make_pair(i, j));
+														field[i][j] = 0;
+												}
+										}
+								}
+						}
+				}
+		}
 }
-*/
 
 int main(){
 		int testcase;
@@ -56,13 +77,11 @@ int main(){
 						field[input_row][input_column] = 1;
 				}
 				
-				vector<pair<int,int> bucket;
-
 				//calculate result of each testcase
 				for(int k = 0; k < rows; k++){
 						for(int l = 0; l < columns; l++){
 								if(field[k][l] == 1){
-										bucket.push_back(make_pair(k, l));
+										find_result(field, rows, columns, k, l);
 										result++;
 								}
 						}
