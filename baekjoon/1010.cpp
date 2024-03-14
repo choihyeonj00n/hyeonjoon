@@ -8,10 +8,8 @@ int factorial(int init_num, int end_num){
 
 		while(init_num != end_num){
 				result = result * init_num;
-				cout << "result : "<< result << endl;
 				init_num --;
 		}
-		cout << "check : "  << result << endl;
 		return result;
 }
 
