@@ -6,7 +6,7 @@ using namespace std;
 //function find_result
 void find_result(int** field, int rows, int columns, int current_row, int current_column){
 		/*
-		#when using reculsive method#
+		# when using reculsive method - DFS#
 		field[current_row][current_column] = 0;
 		if(current_row - 1 > 0 && field[current_row - 1][current_column] == 1){
 				find_result(field, rows, columns, current_row - 1, current_column);
@@ -21,7 +21,6 @@ void find_result(int** field, int rows, int columns, int current_row, int curren
 				find_result(field, rows, columns, current_row, current_column + 1);
 		}
 		*/
-
 }
 
 int main(){
