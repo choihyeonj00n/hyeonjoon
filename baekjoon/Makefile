@@ -1,4 +1,4 @@
-all : 13460
+all : 13460 1012 test 1010
 
 13460 : 13460.cpp
 		g++ -o 13460 13460.cpp
@@ -9,6 +9,9 @@ all : 13460
 test : test.cpp
 		g++ -o test test.cpp
 
-clean : 13460 1012 test
-		rm 13460 1012 test
+1010 : 1010.cpp
+		g++ -o 1010 1010.cpp
+
+clean :
+		rm 13460 1012 test 1010
 
