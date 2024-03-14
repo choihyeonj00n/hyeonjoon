@@ -1,12 +1,15 @@
 //Baekjoon p.1012 find result by using BFS
 #include <iostream>
+#include <vector>
+#include <algorithm>
+#include <utility>
 #include <string.h>
 using namespace std;
 
-//function find_result
+/*
 void find_result(int** field, int rows, int columns, int current_row, int current_column){
-		/*
-		# when using reculsive method - DFS#
+
+
 		field[current_row][current_column] = 0;
 		if(current_row - 1 > 0 && field[current_row - 1][current_column] == 1){
 				find_result(field, rows, columns, current_row - 1, current_column);
@@ -20,8 +23,10 @@ void find_result(int** field, int rows, int columns, int current_row, int curren
 		else if(current_column + 1 < columns && field[current_row][current_column + 1] == 1){
 				find_result(field, rows, columns, current_row, current_column + 1);
 		}
-		*/
+		
+
 }
+*/
 
 int main(){
 		int testcase;
@@ -51,11 +56,13 @@ int main(){
 						field[input_row][input_column] = 1;
 				}
 				
+				vector<pair<int,int> bucket;
+
 				//calculate result of each testcase
 				for(int k = 0; k < rows; k++){
 						for(int l = 0; l < columns; l++){
 								if(field[k][l] == 1){
-										find_result(field, rows, columns, k, l);
+										bucket.push_back(make_pair(k, l));
 										result++;
 								}
 						}
