@@ -6,9 +6,15 @@ using namespace std;
 long long int combinational(long long int init_num, long long int end_num){
 		long long int result = 1;
 
+		if(init_num - end_num < end_num){
+				end_num = init_num - end_num;
+		}
+
+		int nume = 1;
+		int deno = 1;
+
 		while(init_num != end_num){
-				result = result * init_num;
-				cout << "check : " << init_num << "|" << result << endl;
+				deno
 				init_num --;
 		}
 		return result;
