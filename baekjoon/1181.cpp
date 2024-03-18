@@ -23,23 +23,20 @@ int main(){
 				bucket.push_back(str);
 		}
 
-		//중복된 문자열 먼저 지우기
-		for(int i = 0; i < testcase; i++){
-				string str = bucket[i];
-				for(int j = i + 1; j < testcase; j++){
-						if(str == bucket[j]){
-								bucket.erase(bucket.begin() + j);
-								testcase--;
-								j--;
-						}
-				}
-		}
-
 		//sorting
 		sort(bucket.begin(), bucket.end(), compare);
+
+		for(int i = 0; i < testcase - 1; i++){
+				if(bucket[i] == bucket[i + 1]){
+						bucket.erase(bucket.begin() + i + 1);
+						i--;
+						testcase--;
+				}
+		}
 
 		for(int i = 0; i < testcase; i++){
 				cout << bucket[i] << endl;
 		}
+
 		return 0;
 }
