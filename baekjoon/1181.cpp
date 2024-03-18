@@ -46,7 +46,6 @@ int main(){
 		for(int i = 0; i < testcase; i++){
 				int comp = count[i];
 				int key = i;
-				cout << "comp : " << comp << " key : " << key << endl;
 				for(int j = i + 1; j < testcase; j++){
 						if(comp > count[j]){
 								comp = count[j];
@@ -64,7 +63,6 @@ int main(){
 						}
 						cout << key << endl;
 				}
-				cout << "Starting ... " << i << " // key : " << bucket[key] << endl;
 				swap(count[i], count[key]);
 				swap(bucket[i], bucket[key]);
 				for(int k = 0 ; k < testcase; k++){
