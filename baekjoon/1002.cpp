@@ -31,6 +31,9 @@ int main(){
 				else if(dist + r1 == r2 || dist + r2 == r1){
 						results[i] = 1;
 				}
+				else if(dist + r1 < r2 || dist + r2 < r1){
+						results[i] = 0;
+				}
 			
 		}
 
