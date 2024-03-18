@@ -23,15 +23,16 @@ int main(){
 				else if(dist > r1 + r2){
 						results[i] = 0;
 				}
-				else if(dist < r1 + r2){
-						if(dist + r1 > r2 && dist + r2 > r1){
-								results[i] = 2;
-						}
-				}
 				else if(dist + r1 == r2 || dist + r2 == r1){
 						results[i] = 1;
 				}
 				else if(dist + r1 < r2 || dist + r2 < r1){
+						results[i] = 0;
+				}
+				else if(dist < r1 + r2){
+						results[i] = 2;
+				}
+				else{
 						results[i] = 0;
 				}
 			
