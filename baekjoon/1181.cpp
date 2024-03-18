@@ -5,7 +5,7 @@
 using namespace std;
 
 bool compare(string &str1, string &str2){
-		if(str1.length() == str1.length()){
+		if(str1.length() == str2.length()){
 				return str1 < str2;
 		}
 		return str1.length() < str2.length();
