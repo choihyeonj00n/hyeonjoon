@@ -3,10 +3,6 @@
 #include <algorithm>
 using namespace std;
 
-bool compare(int a, int b){
-		return a <= b;
-}
-
 int main(){
 		
 		//setting initial condition
@@ -18,10 +14,10 @@ int main(){
 		}
 
 		//find solution
-		sort(result.begin(), result.end(), compare);
+		sort(result.begin(), result.end(), [](int a, int b){return a < b ;});
 
 		for(int i = 0; i < ele_num; i++){
-				cout << result[i] << endl;
+				cout << result[i] << '\n';
 		}
 
 		return 0;
