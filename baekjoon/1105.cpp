@@ -22,9 +22,9 @@ int how_many_eight(int L, int R, int LR_long, int long_diff, int diff_long){
 				array[1][a] = num4;
 		}
 
-		for(int i = 0; i < size; i++){
+		for(int i = size - 1; i >= 0; i--){
 				if(array[0][i] != array[1][i]){
-						break;
+						i = -1;
 				}
 				else if(array[0][i] == array[1][i] && array[0][i] == 8){
 						count += 1;
