@@ -59,7 +59,6 @@ int main(){
 				}
 				else{
 						int long_diff = L_long - diff_long;
-						cout << "long_diff : " << long_diff << endl;
 						cout << how_many_eight(L, R, L_long, long_diff, diff_long) << endl;
 				}
 		}
