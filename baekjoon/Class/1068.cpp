@@ -4,6 +4,9 @@
 using namespace std;
 
 int DFS(int node, vector<int> &visited, vector<pair<int, vector<int>>> &graph, int count){
+		if(visited[node] == -2){
+				return count;
+		}
 		int size = graph[node].second.size();
 		visited[node] = -1;
 		for (int i = 0; i < size; i++){
