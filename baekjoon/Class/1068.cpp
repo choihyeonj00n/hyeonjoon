@@ -3,9 +3,8 @@
 #include <utility>
 using namespace std;
 
-int DFS(int node, vector<int> visited, vector<pair<int, vector<int>>> graph, int count){
+int DFS(int node, vector<int> &visited, vector<pair<int, vector<int>>> &graph, int count){
 		int size = graph[node].second.size();
-		cout << "Number of child node of " << node << " is " << size << endl;
 		visited[node] = -1;
 		for (int i = 0; i < size; i++){
 				int child = graph[node].second[i];
@@ -56,7 +55,7 @@ int main()
 				}
 		}
 
-		//debugging point
+		/*debugging point
 		cout << "root node is " << root << endl;
 		for(int i = 0; i < NumberOfNode; i++){
 				int size = graph[i].second.size();
@@ -64,7 +63,7 @@ int main()
 						cout << i << " node child is " << graph[i].second[j] << endl;
 				}
 		}
-		//
+		*/
 
 		//first remove RemoveNode
 		visited[RemoveNode] = -2;
@@ -73,11 +72,11 @@ int main()
 		int count = 0;
 		cout << DFS(root, visited, graph, count) << endl;
 
-		//debuggig point
+		/*debuggig point
 		for(int i = 0; i < NumberOfNode; i++){
 				cout << i << " : visited number is " << visited[i] << endl;
 		}
-		//
+		*/
 
 		return 0;
 }
