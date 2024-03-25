@@ -3,7 +3,22 @@
 #include <utility>
 using namespace std;
 
-void DFS(int node, vector<int> visited, vector<pair<int, vector<int>>> graph){
+int DFS(int node, vector<int> visited, vector<pair<int, vector<int>>> graph, int count){
+		int size = graph[node].second.size();
+		cout << "Number of child node of " << node << " is " << size << endl;
+		visited[node] = -1;
+		for (int i = 0; i < size; i++){
+				int child = graph[node].second[i];
+				if(child == -1){
+						count += 1;
+						break;
+				} //case when reached to the leaf node.
+				if(visited[child] == 0){
+						count = DFS(child, visited, graph, count);
+				}
+						
+		}
+		return count;
 }
 
 int main()
@@ -17,9 +32,9 @@ int main()
 		}
 		int RemoveNode;
 		cin >> RemoveNode;
-		vector<int> visited(NumberOfNode, 0); //To check its node visited 0 : nonvisited -1 : visited
+		vector<int> visited(NumberOfNode, 0); //To check its node visited 0 : nonvisited -1 : visited -2 : removed
 		vector<pair<int, vector<int>>> graph; //graph : vector<parent_node, child>
-		for(int i = 0; i < NumberOFNode; i++){
+		for(int i = 0; i < NumberOfNode; i++){
 				vector<int> node; //vector such that include each node's child
 				for(int j = 0; j < NumberOfNode; j++){
 						if(i == Node[j]){
@@ -41,11 +56,28 @@ int main()
 				}
 		}
 
-		//first remove RemoveNode
-		visited[RemoveNode] = -1;
-		int size = graph[RemoveNode].second.size();
-		
+		//debugging point
+		cout << "root node is " << root << endl;
+		for(int i = 0; i < NumberOfNode; i++){
+				int size = graph[i].second.size();
+				for(int j = 0; j < size; j++){
+						cout << i << " node child is " << graph[i].second[j] << endl;
+				}
+		}
+		//
 
+		//first remove RemoveNode
+		visited[RemoveNode] = -2;
+
+		//DFS
+		int count = 0;
+		cout << DFS(root, visited, graph, count) << endl;
+
+		//debuggig point
+		for(int i = 0; i < NumberOfNode; i++){
+				cout << i << " : visited number is " << visited[i] << endl;
+		}
+		//
 
 		return 0;
 }
