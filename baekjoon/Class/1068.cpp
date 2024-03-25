@@ -11,7 +11,7 @@ int DFS(int node, vector<int> &visited, vector<pair<int, vector<int>>> &graph, i
 		visited[node] = -1;
 		for (int i = 0; i < size; i++){
 				int child = graph[node].second[i];
-				if(child == -1){
+				if(child == -1 && visited[child] != -2){
 						count += 1;
 						break;
 				} //case when reached to the leaf node.
