@@ -71,7 +71,7 @@ int main()
 		}
 		int count = 0;
 
-		if(root == REmoveNode){
+		if(root == RemoveNode){
 				cout << 0 << endl;
 		}
 		else{
