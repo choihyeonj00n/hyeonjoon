@@ -55,19 +55,29 @@ int main()
 				}
 		}
 
-		//DFS
-		int count = 0;
-		int rootDFS = DFS(root, visited, graph, count);
-		//cout << "root node leaf node : " << DFS(root, visited, graph, count) << endl;
-
+		//removenode
 		for(int i = 0; i < NumberOfNode; i++){
-				visited[i] = 0;
+				int size = graph[i].second.size();
+				for(int j = 0; j < size; j++){
+						if(graph[i].second[j] == RemoveNode){
+								graph[i].second.erase(graph[i].second.begin() + j);
+								if(graph[i].second.empty()){
+										graph[i].second.push_back(-1);
+								}
+								j--;
+								size--;
+						}
+				}
 		}
-		count = 0;
-		int removeDFS = DFS(RemoveNode, visited, graph, count);
-		//cout << "removenode leaf node : " << DFS(RemoveNode, visited, graph, count) << endl;
+		int count = 0;
 
-		cout << rootDFS - removeDFS << endl;
+		if(root == REmoveNode){
+				cout << 0 << endl;
+		}
+		else{
+				cout << DFS(root, visited, graph, count) << endl;
+		}
+
 		return 0;
 }
 
