@@ -15,7 +15,7 @@ int main()
 						if(num != 0 && num != 1){
 								cout << "0 과 1만 행렬에 넣을 수 있습니다." << endl;
 						}
-						input[i]][j] = num;
+						input[i][j] = num;
 				}
 		}
 		for(int i = 0; i < row; i++){
@@ -25,7 +25,7 @@ int main()
 						if(num != 0 && num != 1){
 								cout << "0 과 1만 행렬에 넣을 수 있습니다." << endl;
 						}
-						output[i]][j] = num;
+						output[i][j] = num;
 				}
 		}
 		return 0;
