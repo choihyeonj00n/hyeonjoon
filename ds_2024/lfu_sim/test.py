@@ -5,7 +5,7 @@ def lfu_sim(cache_slots):
   tot_cnt = 0
   lfu_cache = LFU_cache(cache_slots)
 
-  data_file = open("linkbench.trc")
+  data_file = open("test.trc")
 
 
   for line in data_file.readlines():
@@ -13,10 +13,11 @@ def lfu_sim(cache_slots):
 
     tot_cnt += 1
     if lfu_cache.LFU_simulator(lpn):
+      print(lpn, " : hit\n")
       cache_hit += 1
 
+  lfu_cache.printAll()
   print("cache_slot = ", cache_slots, "cache_hit = ", cache_hit, "hit ratio = ", cache_hit / tot_cnt)
 
 if __name__ == "__main__":
-  for cache_slots in range(100, 1000, 100):
-    lfu_sim(cache_slots)
+    lfu_sim(7)
